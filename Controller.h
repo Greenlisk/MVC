@@ -9,6 +9,7 @@ public:
     Controller(Mark*);
     //void sendData();
     void generateEvent();
+    void click(int, int);
     void move(int, int, int);
 };
 

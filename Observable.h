@@ -16,7 +16,7 @@ public:
 protected:
     void notify_all()
     {
-        for(int i = 0; i < observers.size(); i++)
+        for(unsigned int i = 0; i < observers.size(); i++)
             observers[i]->notify();
     }
 };

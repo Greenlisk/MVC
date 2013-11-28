@@ -11,7 +11,6 @@ Controller::Controller(Mark *mark)
 
 void Controller::generateEvent()
 {
-
     Event event = MOVED;
 
     switch(event) {
@@ -22,11 +21,16 @@ void Controller::generateEvent()
 //        break;
     case MOVED:
 
-        move(rand() % 100, rand() % 100, rand() % 360);
+        move((rand() % 200) - 100, (rand() % 200) - 100, rand() % 360);
         break;
     default: break;
 
     }
+}
+
+void Controller::click(int x , int y)
+{
+    move(x, y, rand() % 360);
 }
 
 void Controller::move(int x, int y, int angle)
