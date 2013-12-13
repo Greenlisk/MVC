@@ -32,20 +32,4 @@ void Mark::display()
     }
     glEnd();
 
-    }
-
-
-
-//void Mark::display()
-//{
-//    float xCenter = this->x / 100.0d;
-//    float yCenter = this->y / 100.0d;
-//    glBegin(GL_LINES);
-//            for(int i =0; i <= 300; i++)
-//        {
-//            glVertex2d(Ax, Ay);
-//            glVertex2d(Bx, By);
-//            glVertex2d(Cx, Cy);
-//        }
-//    glEnd();
-//}
+}

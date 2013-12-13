@@ -5,18 +5,17 @@
 #include "Mark.h"
 #include "DirectionalPoint.h"
 
-class Path : public Observer
+class Path : public Observer, public DisplayableElement
 {
     Mark* mark;
     vector<DirectionalPoint*> points;
     unsigned int amount;
-//    vector<int> x;
-//    vector<int> y;
 public:
     Path(Mark*);
     void generatePoints();
     void notify();
     void printPoints();
+    void display();
 
     unsigned int getMarksCount();
 

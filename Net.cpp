@@ -2,48 +2,34 @@
 #include <GL/glut.h>
 #include <iostream>
 
-Net::Net(float width, float height, float cellWidth, float cellHeight): width(width), height(height), cellWidth(cellWidth), cellHeight(cellHeight)
-{
-
-}
+Net::Net(float width, float height, int cellNumHor, int cellNumVert) :
+    width(width),
+    height(height),
+    cellNumHor(cellNumHor),
+    cellNumVert(cellNumVert)
+{}
 
 void Net::display()
 {
     glColor3f(1.0f, 1.0f, 1.0f);
-    float baseLeft = 0;//width;
-    float baseDown = 0;//heightf;
+    float cellWidth = width / cellNumHor;
+    float cellHeight = height / cellNumVert;
+    glColor3f(0.0, 1.0, 0.0);
 
-    int cellInLine = width / cellWidth;
-    int cellInRow = height / cellHeight;
-
-    std::cout<<"\nnets["<<width<<":"<<height<<"]"<<std::endl;
-//    std::cout<<"\nbase["<<baseLeft<<":"<<baseDown<<"]"<<std::endl;
-
-    for(int i = 0; i < cellInLine; i++) {
-        float left = baseLeft + cellWidth * i;
-        for(int j = 0; j < cellInRow; j++) {
-            float down = baseDown + cellHeight * j;
-            drawCell(left, down);
-//            std::cout<<"\ndrawCell["<<left<<":"<<down<<"]"<<std::endl;
-        }
+    for(float i = 0; i < width; i += cellWidth)
+    {
+        glBegin(GL_LINES);
+            glVertex2f(i, 0);
+            glVertex2f(i, height);
+        glEnd();
     }
+    for(float j = 0; j < height; j += cellHeight)
+    {
 
-}
-
-void Net::drawCell(float left, float down)
-{
-    glBegin(GL_LINES);
-        glVertex2f(left, down);
-        glVertex2f(left, down + this->cellHeight);
-
-
-        glVertex2f(left, down + this->cellHeight);
-        glVertex2f(left + this->cellWidth, down + this->cellHeight);
-
-        glVertex2f(left + this->cellWidth, down + this->cellHeight);
-        glVertex2f(left + this->cellWidth, down);
-//        glVertex2f(left, down);
-    glEnd();
-//        glRectf(left, down, left + this->cellWidth, down + this->cellHeight);
+        glBegin(GL_LINES);
+            glVertex2f(0, j);
+            glVertex2f(width, j);
+        glEnd();
+    }
 }
 

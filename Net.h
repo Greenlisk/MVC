@@ -6,11 +6,11 @@ class Net : public DisplayableElement
 {
     float width;
     float height;
-    float cellWidth;
-    float cellHeight;
+    int cellNumHor;
+    int cellNumVert;
 
 public:
-    Net(float width, float height, float cellWidth, float cellHeight);
+    Net(float width, float height, int cellNumHor, int cellNumVert);
     void display();
     void drawCell(float left, float down);
 };

@@ -3,44 +3,30 @@
 #include <GL/glut.h>
 #include <iostream>
 
-View::View(Mark* mark, Net * net, Path * path)
+View::View()
 {
-    this->mark = mark;
-    this->net = net;
-    this->path = path;
 }
 
 void View::notify()
 {
-    x = mark->x;
-    y = mark->y;
-    printf("Xpos: %i Ypos: %i\n", x, y);
-
-    drawNet();
-    drawObject();
-    drawPath();
 }
-void View::drawNet(){}
-void View::drawObject(){}
-void View::drawPath(){}
-void View::display(){
-    glColor3f(1.0f, 1.0f, 0.0f);
 
-    unsigned int marks_number = this->path->getMarksCount();
+View* View::getInstance()
+{
+    static View* instance = new View();
 
-    if(2 >= marks_number)
-        return;
+    return instance;
+}
 
-    glColor3f(1.0f, 0.0f, 1.0f);
-    glBegin(GL_LINE_STRIP);
-
-    for(unsigned int i = 0; i < marks_number; i++)
-    {
-
-        DirectionalPoint *point = this->path->get(i);
-        printf("display %i\n", 12);
-        printf("CC->%f:%f", point->getX(), point->getY());
-        glVertex2f(point->getX(), point->getY());
+void View::display()
+{
+    //printf("elements: %i\n", getInstance()->elements.size());
+    for(unsigned int i = 0; i < getInstance()->elements.size(); i++) {
+        getInstance()->elements[i]->display();
     }
-    glEnd();
+}
+
+void View::addElement(DisplayableElement *element)
+{
+    this->elements.push_back(element);
 }

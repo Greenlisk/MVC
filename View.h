@@ -6,20 +6,16 @@
 #include "Path.h"
 #include "DisplayableElement.h"
 
-class View : public Observer, public DisplayableElement
+class View : public Observer
 {
-    Mark *mark;
-    int x, y;
-    Net *net;
-    Path *path;
+    vector<DisplayableElement *> elements;
 
 public:
-    View(Mark*, Net*, Path*);
-    void drawNet();
-    void drawObject();
-    void drawPath();
-    void display();
+    View();
+    static void display();
+    static View* getInstance();
     void notify();
+    void addElement(DisplayableElement *element);
 };
 
 #endif // VIEW_H

@@ -1,6 +1,7 @@
 #include "Path.h"
 #include <stdio.h>
 #include <iostream>
+#include <GL/glut.h>
 
 using namespace std;
 
@@ -17,8 +18,6 @@ void Path::notify()
 {
     DirectionalPoint *point = new DirectionalPoint(mark->x, mark->y, mark->angle);
     this->points.push_back(point);
-    std::cout<<"Path:amount="<<this->amount<<std::endl;
-    std::cout<<"Path:amount="<<this<<std::endl;
     amount++;
 
     generatePoints();
@@ -48,4 +47,28 @@ unsigned int Path::getMarksCount()
 
     return this->amount;
 }
-DirectionalPoint *Path::get(unsigned int i) {return points[i];}
+
+DirectionalPoint *Path::get(unsigned int i)
+{
+    return points[i];
+}
+
+void Path::display()
+{
+    //glColor3f(1.0f, 1.0f, 0.0f);
+
+    unsigned int marks_number = getMarksCount();
+
+    glColor3f(1.0f, 0.0f, 1.0f);
+    glBegin(GL_LINE_STRIP);
+
+    for(unsigned int i = 0; i < marks_number; i++)
+    {
+
+        DirectionalPoint *point = get(i);
+        printf("display %i\n", 12);
+        printf("CC->%f:%f", point->getX(), point->getY());
+        glVertex2f(point->getX(), point->getY());
+    }
+    glEnd();
+}

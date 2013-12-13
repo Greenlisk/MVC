@@ -19,7 +19,7 @@ public:
         setY((float)y);
         setAngle((float)angle);
 
-    };
+    }
 
     void setX(float x)                  {   this->x = x;            }
     float getX()                        {   return this->x;         }
