@@ -9,7 +9,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-#include "Scene.h"
 #include <GL/glut.h>
 //#include <glu.h>
 

@@ -1,0 +1,30 @@
+OBJS = main.o View.o Controller.o Path.o Mark.o Net.o BlinkedMark.o DisplayableElement.o
+CC = g++
+CFLAGS = -Wall -c $(DEBUG)
+LIBS = -lGL -lglut
+
+MVC: $(OBJS)
+	$(CC) $(OBJS) -o MVC $(LIBS)
+
+main.o: main.cpp Controller.h View.h Path.h Mark.h BlinkedMark.h Net.h
+	$(CC) $(CFLAGS) main.cpp $(LIBS)
+
+View.o: View.cpp View.h Observer.h DisplayableElement.h
+	$(CC) $(CFLAGS) View.cpp $(LIBS)
+
+Controller.o: Controller.cpp Controller.h Mark.h
+	$(CC) $(CFLAGS) Controller.cpp $(LIBS)
+
+Path.o: Path.cpp Path.h Observer.h Mark.h DirectionalPoint.h DisplayableElement.h
+	$(CC) $(CFLAGS) Path.cpp $(LIBS)
+
+Mark.o: Mark.cpp Mark.h DisplayableElement.h
+	$(CC) $(CFLAGS) Mark.cpp $(LIBS)
+
+Net.o: Net.cpp Net.h DisplayableElement.h
+	$(CC) $(CFLAGS) Net.cpp $(LIBS)
+	
+BlinkedMark.o: BlinkedMark.cpp BlinkedMark.h
+	$(CC) $(CFLAGS) BlinkedMark.cpp $(LIBS)
+
+DisplayableElement.o: 

@@ -14,10 +14,8 @@ SOURCES += \
     Path.cpp \
     Controller.cpp \
     Mark.cpp \
-    Scene.cpp \
     DisplayableElement.cpp \
     DirectionalPoint.cpp \
-    Window.cpp \
 
 HEADERS += \
     BlinkedMark.h\
@@ -28,7 +26,5 @@ HEADERS += \
     Mark.h \
     Observable.h \
     Observer.h \
-    Scene.h \
     DisplayableElement.h \
-    DirectionalPoint.h \
-    Window.h
+    DirectionalPoint.h

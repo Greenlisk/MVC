@@ -1,14 +1,12 @@
 #ifndef VIEW_H
 #define VIEW_H
 #include "Observer.h"
-#include "Mark.h"
-#include "Net.h"
-#include "Path.h"
+#include <vector>
 #include "DisplayableElement.h"
 
 class View : public Observer
 {
-    vector<DisplayableElement *> elements;
+    std::vector<DisplayableElement *> elements;
 
 public:
     View();
